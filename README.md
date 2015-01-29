@@ -15,7 +15,7 @@ amazon = require('aws-product-api');
 
 Create REST Object
 ```javascript
-var RESTobj = amazon.Setup("Secret_Key", "AWS_ID", "Associate_Tag");
+var RESTobj = new amazon("Secret_Key", "AWS_ID", "Associate_Tag");
 ```
 
 Now you can search for items on amazon:

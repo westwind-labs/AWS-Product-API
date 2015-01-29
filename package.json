@@ -1,5 +1,5 @@
 {
-  "name": "AWS-API",
+  "name": "aws-product-api",
   "version": "1.0.0",
   "description": "Simple service to send REST calls to Amazon Web Services Product Advertising API and return a Javascript Object",
   "main": "index.js",

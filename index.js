@@ -3,15 +3,21 @@ var AmazonController,
   parseXML = require('xml2js').parseString,
   Promise = require('es6-promise').Promise;
 
-AmazonController = {
-  var Credentials = {Secret_Key: null, AWS_ID: null, Associate_Tag: null},
-  var generateSignature = function(stringToSign, awsSecret) {
+AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
+  var Credentials = { 
+    Secret_Key: Secret_Key, 
+    AWS_ID: AWS_ID, 
+    Associate_Tag: Associate_Tag
+  }
+  
+  function generateSignature(stringToSign, awsSecret) {
     var hmac = crypto.createHmac('sha256', awsSecret);
     var signature = hmac.update(stringToSign).digest('base64');
 
     return signature;
-  },
-  var EncapsulateItemArray = function(prefix, ItemArray) {
+  }
+  
+  function EncapsulateItemArray(prefix, ItemArray) {
     if(!Array.isArray(ItemArray)) {
       throw new Error("Parameters not array");
     }
@@ -29,8 +35,9 @@ AmazonController = {
     }
     
     return ReturnArr.join("&");
-  },
-  var GenerateURL = function(query) {
+  }
+  
+  function GenerateURL(query) {
     if(typeof query !== "object") {
       throw new Error("Query not Object");
     }
@@ -94,13 +101,9 @@ AmazonController = {
     var queryString = 'http://' + domain + '/onca/xml?' + unsignedString.join("&") + '&Signature=' + signature;
     
     return queryString;
-  },
-  Setup : function(Secret_Key, AWS_ID, Associate_Tag) {
-    Credentials.Secret_Key = Secret_Key; 
-    Credentials.AWS_ID = AWS_ID; 
-    Credentials.Associate_Tag = Associate_Tag;
-  },
-  Query : function(query, callback) {
+  }
+  
+  this.Query = function(query, callback) {
     var url = GenerateURL(query);
 
     if (typeof callback === 'function') {
@@ -148,7 +151,7 @@ AmazonController = {
     });
 
     return promise;
-  },
+  }
 };
 
 module.exports = AmazonController;
