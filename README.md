@@ -61,7 +61,8 @@ RESTobj.Query({
 [HMAC:](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CartAdd.html) Default: None; Valid Values: Value is calculated using request parameters, their values, a cryptographic function, and the Secret Key, which acts as the "key" for the function.  
 [IdType:](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/ItemLookup.html) Default: ASIN; Valid Values: SKU | UPC | EAN | ISBN (US only, when search index is Books). UPC is not valid in the CA locale.  
 [IncludeReviewsSummary:](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/ItemLookup.html) Default: True; Valid Values: True | False  
-[Item:](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CartCreate.html) For REST, a prefix for ASIN and quantity, both of which are used to specify the item to add to the cart, for example, item.1.ASIN=1234abcd, item.1.quantity=2. Valid Values: Use an array of objects e.g. ```javascript
+[Item:](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CartCreate.html) For REST, a prefix for ASIN and quantity, both of which are used to specify the item to add to the cart, for example, item.1.ASIN=1234abcd, item.1.quantity=2. Valid Values: Use an array of objects e.g.
+```javascript
 'Item: [{ASIN/OfferListingId: "ID1", "Quantity": 2}, {ASIN/OfferListingId: "ID2", "Quantity": 1}]'
 ```  
 [ItemId:](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/ItemLookup.html) Default: None; Constraints: Must be a valid item ID. For more than one ID, use a comma-separated list of up to ten IDs.  
