@@ -1,0 +1,30 @@
+{
+  "name": "AWS-API",
+  "version": "1.0.0",
+  "description": "Simple service to send REST calls to Amazon Web Services Product Advertising API and return a Javascript Object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "amazon",
+    "aws",
+    "product",
+    "advertising"
+  ],
+  "author": "Justin MacArthur <jm@wwdd.ca>",
+  "license": "ISC",
+  "dependencies": {
+    "es6-promise": "^2.0.1",
+    "request": "^2.51.0",
+    "xml2js": "^0.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/westwind-rnd/AWS-Product-API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/westwind-rnd/AWS-Product-API/issues"
+  },
+  "homepage": "https://github.com/westwind-rnd/AWS-Product-API"
+}
