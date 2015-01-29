@@ -1,7 +1,8 @@
 var AmazonController,
   request = require('request'),
   parseXML = require('xml2js').parseString,
-  Promise = require('es6-promise').Promise;
+  Promise = require('es6-promise').Promise,
+  crypto = require('crypto');
 
 AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
   var Credentials = { 
