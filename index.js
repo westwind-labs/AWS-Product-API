@@ -65,7 +65,7 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
       RelatedItemPage: null,
       RelationshipType: null,
       ResponseGroup: "Small",
-      SearchIndex: "All",
+      SearchIndex: null,
       Service: "AWSECommerceService",
       SimilarityType: null,
       Timestamp: encodeURIComponent((new Date()).toISOString()),
