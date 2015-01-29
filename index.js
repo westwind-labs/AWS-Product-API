@@ -24,7 +24,7 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
     
     var ReturnArr = new Array();
     
-    for(int i = 0; i < ItemArray.length; i++) {
+    for(var i = 0; i < ItemArray.length; i++) {
       if(typeof ItemArray[i] !== "object") {
         throw new Error("Array value not Object");
       }
