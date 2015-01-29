@@ -43,8 +43,7 @@ AmazonController = {
       AssociateTag: credentials.awsTag,
       CartId: null,
       CartItemId: null,
-      Condition: "All",
-      ContentType: null,
+      Condition: "New",
       HMAC: null,
       IdType: null,
       IncludeReviewsSummary: null,
@@ -57,15 +56,15 @@ AmazonController = {
       Quantity: null,
       RelatedItemPage: null,
       RelationshipType: null,
-      ResponseGroup: "Large",
-      SearchIndex: null,
+      ResponseGroup: "Small",
+      SearchIndex: "All",
       Service: "AWSECommerceService",
       SimilarityType: null,
       Timestamp: encodeURIComponent((new Date()).toISOString()),
       TruncateReviewsAt: null,
       Validate: null,
       VariationPage: null,
-      Version: "2011-08-01",
+      Version: "2013-08-01",
       XMLEscaping: null
     };
 
@@ -96,16 +95,10 @@ AmazonController = {
     
     return queryString;
   },
-  Setup : function(input_Credentials) {
-    if(typeof input_Credentials !== "object") {
-      throw new Error("Credential Object Error");
-    }
-    
-    for(var name in input_Credentials) {
-      if(typeof Credentials[name] !== "undefined") {
-        Credentials[name] = input_Credentials[name];
-      }
-    }
+  Setup : function(Secret_Key, AWS_ID, Associate_Tag) {
+    Credentials.Secret_Key = Secret_Key; 
+    Credentials.AWS_ID = AWS_ID; 
+    Credentials.Associate_Tag = Associate_Tag;
   },
   Query : function(query, callback) {
     var url = GenerateURL(query);
