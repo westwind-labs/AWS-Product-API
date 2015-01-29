@@ -46,9 +46,9 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
     var domain = "webservices.amazon.com";
     var amazonQuery = {
       ASIN: null,
-      AWSAccessKeyId: Credentials.awsId,
+      AWSAccessKeyId: Credentials.AWS_ID,
       Action: null,
-      AssociateTag: Credentials.awsTag,
+      AssociateTag: Credentials.Associate_Tag,
       CartId: null,
       CartItemId: null,
       Condition: "New",
@@ -98,7 +98,7 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
       }
     }
     
-    var signature = encodeURIComponent(generateSignature('GET\n' + domain + '\n/onca/xml\n' + unsignedString.join("&"), Credentials.awsSecret)).replace(/\+/g, '%2B');
+    var signature = encodeURIComponent(generateSignature('GET\n' + domain + '\n/onca/xml\n' + unsignedString.join("&"), Credentials.Secret_Key)).replace(/\+/g, '%2B');
     var queryString = 'http://' + domain + '/onca/xml?' + unsignedString.join("&") + '&Signature=' + signature;
     
     return queryString;
