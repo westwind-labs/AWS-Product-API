@@ -100,7 +100,16 @@ Valid Values:
 [Item:](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CartCreate.html)  
 For REST, a prefix for ASIN and quantity, both of which are used to specify the item to add to the cart, for example, item.1.ASIN=1234abcd, item.1.quantity=2. Valid Values: Use an array of objects e.g.
 ```javascript
-'Item: [{ASIN: "ID1", "Quantity": 2}, {ASIN: "ID2", "Quantity": 1}]'
+Item: [
+  {
+    ASIN: "ID1", 
+    Quantity: 2
+  }, 
+  {
+    ASIN: "ID2", 
+    Quantity: 1
+  }
+];
 ```
 
 [ItemId:](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/ItemLookup.html)  
