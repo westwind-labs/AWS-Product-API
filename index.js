@@ -26,12 +26,12 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
     var ReturnArr = new Array();
     
     for(var i = 0; i < ItemArray.length; i++) {
-      if(typeof ItemArray[i] !== "object") {
-        throw new Error("Array value not Object");
-      }
-      
-      for(var name in ItemArray[i]) {
-        ReturnArr.push(prefix + "." + i + "." + name + "=" + ItemArray[i][name]);
+      if(typeof ItemArray[i] === "object") {
+        for(var name in ItemArray[i]) {
+          ReturnArr.push(prefix + "." + (i+1) + "." + name + "=" + encodeURIComponent(ItemArray[i][name]));
+        }
+      } else {
+        ReturnArr.push(prefix + "." + (i+1) + "=" + encodeURIComponent(ItemArray[i]));  
       }
     }
     
@@ -57,6 +57,7 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
       IncludeReviewsSummary: null,
       Item: null,
       ItemId: null,
+      ItemLookup: null,
       MarketplaceDomain: null,
       MerchantId: null,
       OfferListingId: null,
@@ -68,7 +69,7 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
       SearchIndex: null,
       Service: "AWSECommerceService",
       SimilarityType: null,
-      Timestamp: encodeURIComponent((new Date()).toISOString()),
+      Timestamp: (new Date()).toISOString(),
       TruncateReviewsAt: null,
       Validate: null,
       VariationPage: null,
@@ -81,11 +82,11 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
         if(name === "domain") {
           domain = query[name];
         } else {
-          amazonQuery[name] = encodeURIComponent(query[name]);
+          amazonQuery[name] = query[name];
         }
       }
     }
-    
+        
     var unsignedString = new Array();
     
     for(var name in amazonQuery) {
@@ -93,7 +94,7 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
         if(Array.isArray(amazonQuery[name])) {
           unsignedString.push(EncapsulateItemArray(name, amazonQuery[name]));
         } else {
-          unsignedString.push(name + "=" + amazonQuery[name]);
+          unsignedString.push(name + "=" + encodeURIComponent(amazonQuery[name]));
         }
       }
     }
