@@ -137,15 +137,15 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
         }
 
         if (response.statusCode != 200) {
-          parseXML(body, function(err, resp){
+          parseXML(body, {explicitArray: false}, function(err, resp){
             if(err){
               reject(err)
             }
-            reject(resp[query.Operation + "ErrorResponse"]);
+            reject((resp[query.Operation + "ErrorResponse"]));
           });
         } else {
-          parseXML(body, function(err, resp){
-            results = resp[query.Operation + "Response"].Items;
+          parseXML(body, {explicitArray: false}, function(err, resp){
+            results = (resp[query.Operation + "Response"].Items);
             resolve(results);
           });
         }
