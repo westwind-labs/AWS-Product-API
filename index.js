@@ -149,7 +149,7 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
         } else {
           parseXML(body, {explicitArray: false}, function(err, resp){
             for(var name in resp) {
-              resolve((resp[name].Items));
+              resolve((resp[name]));
               break;
             }
           });
