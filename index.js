@@ -141,12 +141,17 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
             if(err){
               reject(err)
             }
-            reject((resp[query.Operation + "ErrorResponse"]));
+            for(var name in resp) {
+              reject((resp[name]));
+              break;
+            }
           });
         } else {
           parseXML(body, {explicitArray: false}, function(err, resp){
-            results = (resp[query.Operation + "Response"].Items);
-            resolve(results);
+            for(var name in resp) {
+              resolve((resp[name].Items));
+              break;
+            }
           });
         }
       });
