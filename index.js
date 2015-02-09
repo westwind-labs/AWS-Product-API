@@ -78,10 +78,10 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
     };
 
     for(var name in query) {
-      if(typeof amazonQuery[name] !== "undefined") {
-        if(name === "domain") {
-          domain = query[name];
-        } else {
+      if(name === "domain") {
+        domain = query[name];
+      } else {
+        if(typeof amazonQuery[name] !== "undefined") {
           amazonQuery[name] = query[name];
         }
       }
