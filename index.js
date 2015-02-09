@@ -43,7 +43,7 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
       throw new Error("Query not Object");
     }
     
-    var domain = "webservices.amazon.com";
+    var domain = "com";
     var amazonQuery = {
       ASIN: null,
       AWSAccessKeyId: Credentials.AWS_ID,
@@ -99,8 +99,8 @@ AmazonController = function(Secret_Key, AWS_ID, Associate_Tag) {
       }
     }
     
-    var signature = encodeURIComponent(generateSignature('GET\n' + domain + '\n/onca/xml\n' + unsignedString.join("&"), Credentials.Secret_Key)).replace(/\+/g, '%2B');
-    var queryString = 'http://' + domain + '/onca/xml?' + unsignedString.join("&") + '&Signature=' + signature;
+    var signature = encodeURIComponent(generateSignature('GET\nwebservices.amazon.' + domain + '\n/onca/xml\n' + unsignedString.join("&"), Credentials.Secret_Key)).replace(/\+/g, '%2B');
+    var queryString = 'http://webservices.amazon.' + domain + '/onca/xml?' + unsignedString.join("&") + '&Signature=' + signature;
     
     return queryString;
   }
